@@ -43,7 +43,7 @@ const GamePage = () => {
         <>
           <Box>
             <Typography variant="h1">
-              {gameNumbers[0]} x {gameNumbers[1]}
+              {gameNumbers[0]}x{gameNumbers[1]}
             </Typography>
           </Box>
           <Box maxWidth={320}>
