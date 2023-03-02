@@ -1,40 +1,40 @@
-import { useCallback } from "react"
+import { useCallback } from "react";
 
-import { Typography } from "@mui/material"
-import { Box } from "@mui/system"
-import { useRouter } from "next/router"
-import { routes } from "../routes"
-import useUserSettings from "../useUserSettings"
-import Calculator from "./components/Calculator"
-import Top from "./components/Top"
-import useGame from "./useGame"
+import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import { useRouter } from "next/router";
+import { routes } from "modules/multiply/util/routes";
+import useUserSettings from "modules/multiply/hooks/useUserSettings";
+import Calculator from "modules/multiply/game/components/Calculator";
+import Top from "modules/multiply/game/components/Top";
+import useGame from "modules/multiply/game/useGame";
 
 const GamePage = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleGameFinished = () => {
-    router.push(routes.gamefinished)
-  }
+    router.push(routes.gamefinished);
+  };
 
   const { gameNumbers, onAnswer } = useGame({
     level: 1,
     onGameFinished: handleGameFinished,
-  })
-  const { setUserSettings, userSettings } = useUserSettings()
+  });
+  const { setUserSettings, userSettings } = useUserSettings();
 
   const handleSubmitAnswer = useCallback(
     (answer: number) => {
-      const answerCorrect = onAnswer(answer)
+      const answerCorrect = onAnswer(answer);
       if (answerCorrect) {
-        const newGameCount = userSettings.countGames + 1
-        setUserSettings([["countGames", newGameCount]])
-        return true
+        const newGameCount = userSettings.countGames + 1;
+        setUserSettings([["countGames", newGameCount]]);
+        return true;
       } else {
-        return false
+        return false;
       }
     },
     [onAnswer, setUserSettings, userSettings.countGames]
-  )
+  );
 
   return (
     <>
@@ -42,7 +42,7 @@ const GamePage = () => {
       {!!gameNumbers.length && (
         <>
           <Box>
-            <Typography variant='h1'>
+            <Typography variant="h1">
               {gameNumbers[0]} x {gameNumbers[1]}
             </Typography>
           </Box>
@@ -52,7 +52,7 @@ const GamePage = () => {
         </>
       )}
     </>
-  )
-}
+  );
+};
 
-export default GamePage
+export default GamePage;

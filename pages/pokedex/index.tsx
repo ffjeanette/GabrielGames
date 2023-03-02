@@ -1,16 +1,13 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
-import { useRouter } from "next/router";
-import Top from "./components/Top";
-import UserPokedex from "./UserPokedex";
+import Top from "modules/multiply/game/components/Top";
+import UserPokedex from "modules/multiply/pokedex/UserPokedex";
 
 const PokedexPage = () => {
-    return (
-        <>
-        <Top />
-        <UserPokedex height={'100%'} />
+  return (
+    <>
+      <Top />
+      <UserPokedex height={"100%"} />
+    </>
+  );
+};
 
-        </>
-    )
-}
-
-export default PokedexPage
+export default PokedexPage;

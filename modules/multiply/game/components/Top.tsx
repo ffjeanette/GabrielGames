@@ -6,11 +6,11 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import pokemons from "../../pokemonLocal";
-import useUserSettings from "../../useUserSettings";
+import pokemons from "modules/multiply/util/pokemonLocal";
+import useUserSettings from "modules/multiply/hooks/useUserSettings";
 import PaidIcon from "@mui/icons-material/Paid";
 import { useRouter } from "next/router";
-import { routes } from "../../routes";
+import { routes } from "modules/multiply/util/routes";
 import { useEffect } from "react";
 
 const Top = () => {

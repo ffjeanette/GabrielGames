@@ -4,12 +4,12 @@ import Box from "@mui/material/Box";
 import { useEffect, useState } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { defaultPokemonsArray, ValidDefaultPokemonId } from "../helpers";
+import { defaultPokemonsArray, ValidDefaultPokemonId } from "../util/helpers";
 import PokemonImage from "./PokemonImage";
 import { styled } from "@mui/material/styles";
-import useUserSettings from "../useUserSettings";
+import useUserSettings from "../hooks/useUserSettings";
 import { useRouter } from "next/router";
-import { routes } from "../routes";
+import { routes } from "../util/routes";
 
 const GabrielsTextField = styled(TextField)({
   "& label.Mui-focused": {

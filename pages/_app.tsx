@@ -1,9 +1,9 @@
-import "../styles/globals.css"
-import type { AppProps } from "next/app"
-import { useEffect, useState } from "react"
-import { createTheme, ThemeProvider } from "@mui/material"
-import styles from "../styles/Home.module.css"
-import CssBaseline from "@mui/material/CssBaseline"
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { useEffect, useState } from "react";
+import { createTheme, ThemeProvider } from "@mui/material";
+import styles from "../styles/Home.module.css";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const darkTheme = createTheme({
   palette: {
@@ -16,14 +16,14 @@ const darkTheme = createTheme({
       textTransform: "none",
     },
   },
-})
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [pageLoaded, setPageLoaded] = useState(false)
+  const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
-    setPageLoaded(true)
-  }, [])
+    setPageLoaded(true);
+  }, []);
 
   return pageLoaded ? (
     <ThemeProvider theme={darkTheme}>
@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </main>
       </div>
     </ThemeProvider>
-  ) : null
+  ) : null;
 }
 
-export default MyApp
+export default MyApp;

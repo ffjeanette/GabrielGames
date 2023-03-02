@@ -1,10 +1,10 @@
-import type { NextPage } from "next"
-import useUserSettings from "./useUserSettings"
-import UserNew from "./components/UserNew"
-import UserReturning from "./components/UserReturning"
+import type { NextPage } from "next";
+import useUserSettings from "../modules/multiply/hooks/useUserSettings";
+import UserNew from "../modules/multiply/components/UserNew";
+import UserReturning from "../modules/multiply/components/UserReturning";
 
 const Home: NextPage = () => {
-  const { userSettings } = useUserSettings()
+  const { userSettings } = useUserSettings();
 
   return (
     <>
@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <UserNew />
       )}
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
