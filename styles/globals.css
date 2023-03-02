@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "VT323", monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+.rainbow-button {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background-image: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  cursor: pointer;
+}
+
+.rainbow-button:before {
+  content: "";
+  position: absolute;
+  width: 97%;
+  height: 90px;
+  background-color: black;
+  top: 5px;
+  left: 5px;
+}
+
+.rainbow-button:after {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-weight: 900;
+  font-size: 3rem;
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rainbow-button.playmore:after {
+  content: "Spill mer!";
+}
+.rainbow-button.pokedex:after {
+  content: "Se din pokedex!";
+}
+
+@keyframes move {
+  to {
+    background-position: 2500vh;
+  }
+}
+
+.rainbow-button:hover {
+  animation: move 30s linear infinite;
+}
+
+.rainbow-button:hover:after {
+  animation: move 29s linear infinite;
+}
