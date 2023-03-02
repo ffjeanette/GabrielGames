@@ -1,102 +1,102 @@
-import { Grid, Typography } from "@mui/material"
-import { Box } from "@mui/system"
-import { ReactNode, useState, useEffect, useCallback, memo } from "react"
+import { Grid, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import { ReactNode, useState, useEffect, useCallback, memo } from "react";
 
 type Props = {
-  onSubmit: (number: number) => boolean
-}
+  onSubmit: (number: number) => boolean;
+};
 
 const Button = ({
   children,
   onClick,
   color,
 }: {
-  color?: "red" | "green"
-  children: ReactNode
-  onClick: () => void
+  color?: "red" | "green";
+  children: ReactNode;
+  onClick: () => void;
 }) => (
   <Box
     onClick={onClick}
     height={"auto"}
     style={{ background: color || "grey" }}
   >
-    <Typography variant='h5' align='center'>
+    <Typography variant="h6" align="center">
       {children}
     </Typography>
   </Box>
-)
+);
 
 const Calculator = ({ onSubmit }: Props) => {
-  const [enteredNumbers, setEnteredNumbers] = useState<Array<number>>([])
-  const [wrongAnswer, setWrongAnswer] = useState<boolean>(false)
-  const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0]
+  const [enteredNumbers, setEnteredNumbers] = useState<Array<number>>([]);
+  const [wrongAnswer, setWrongAnswer] = useState<boolean>(false);
+  const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
 
   const handleClickNumber = useCallback(
     (newNumber: number) => {
-      setEnteredNumbers([...(wrongAnswer ? [] : enteredNumbers), newNumber])
-      setWrongAnswer(false)
+      setEnteredNumbers([...(wrongAnswer ? [] : enteredNumbers), newNumber]);
+      setWrongAnswer(false);
     },
     [enteredNumbers, wrongAnswer]
-  )
+  );
 
   const handleClickSubmit = useCallback(() => {
     if (!enteredNumbers.length) {
-      return
+      return;
     }
-    const enteredNumber = parseInt(enteredNumbers.join(""))
-    const correct = onSubmit(enteredNumber)
+    const enteredNumber = parseInt(enteredNumbers.join(""));
+    const correct = onSubmit(enteredNumber);
 
     if (correct) {
-      setEnteredNumbers([])
+      setEnteredNumbers([]);
     } else {
-      setWrongAnswer(true)
+      setWrongAnswer(true);
     }
-  }, [enteredNumbers, onSubmit])
+  }, [enteredNumbers, onSubmit]);
 
   const handleClickReset = () => {
-    setWrongAnswer(false)
-    setEnteredNumbers([])
-  }
+    setWrongAnswer(false);
+    setEnteredNumbers([]);
+  };
 
   const handlekeyDown = useCallback(
     (e: KeyboardEvent) => {
-      e.preventDefault()
+      e.preventDefault();
 
       if (e.repeat) {
-        return
+        return;
       }
 
       //TODO Event fires multiple timea causeig problems
-      const current = e.key
-      const values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+      const current = e.key;
+      const values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
       if (values.includes(current)) {
-        let value = current
-        handleClickNumber(parseInt(value))
-        return
+        let value = current;
+        handleClickNumber(parseInt(value));
+        return;
       }
 
       if (current.toLowerCase() === "backspace") {
-        handleClickReset()
-        return
+        handleClickReset();
+        return;
       }
       if (current.toLowerCase() === "enter") {
-        handleClickSubmit()
-        return
+        handleClickSubmit();
+        return;
       }
     },
     [handleClickNumber, handleClickSubmit]
-  )
+  );
 
   useEffect(() => {
-    document.addEventListener("keydown", handlekeyDown)
+    document.addEventListener("keydown", handlekeyDown);
     return () => {
-      document.removeEventListener("keydown", handlekeyDown)
-    }
-  }, [handlekeyDown])
+      document.removeEventListener("keydown", handlekeyDown);
+    };
+  }, [handlekeyDown]);
 
   return (
     <>
-      <Typography variant='h2' color={wrongAnswer ? "red" : "inherit"}>
+      <Typography variant="h2" color={wrongAnswer ? "red" : "inherit"}>
         = {enteredNumbers.join("")}
       </Typography>
       <Grid container spacing={2}>
@@ -117,7 +117,7 @@ const Calculator = ({ onSubmit }: Props) => {
         </Grid>
       </Grid>
     </>
-  )
-}
+  );
+};
 
-export default memo(Calculator)
+export default memo(Calculator);

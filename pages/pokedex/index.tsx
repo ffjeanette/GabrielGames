@@ -1,4 +1,4 @@
-import Top from "modules/multiply/game/components/Top";
+import Top from "modules/multiply/pokedex/components/Top";
 import UserPokedex from "modules/multiply/pokedex/UserPokedex";
 
 const PokedexPage = () => {
